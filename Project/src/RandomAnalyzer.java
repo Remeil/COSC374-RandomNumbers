@@ -6,11 +6,11 @@
  */
 public class RandomAnalyzer {
     public static void main(String[] args) {
-	System.out.println(countRandomGcds(5000, RandomMode.MathRandom));
-	System.out.println(countRandomGcds(5000, RandomMode.RandomObject));
+	System.out.println(countRandomGcds(5000, 1, RandomMode.MathRandom));
+	System.out.println(countRandomGcds(5000, 500, RandomMode.RandomObject));
     }
     
-    private static int countRandomGcds(int numberOfPairsToGenerate, RandomMode mode) {
+    private static int countRandomGcds(int numberOfPairsToGenerate, int seed, RandomMode mode) {
 	return 15;
     }
     
