@@ -1,0 +1,66 @@
+import java.util.Random;
+
+/*
+ * RandomAnalyzer.java
+ * Author(s):
+ * 
+ * This class holds methods to be used for testing.
+ */
+public class RandomAnalyzer {
+
+    public static void main(String[] args) {
+        int success = 0;
+        double[] data = new double[50];
+        int[] seeds = new int[50];
+        seeds[0] = 151;
+        double[] probability = new double[50];
+
+        for (int i = 0; i < 50; i++) {//perform 50 sets of tests.
+
+            
+           
+            data[i] = countRandomGcds(10000, seeds[i]);//stores number of successes
+            
+            probability[i] = data[i]/10000;
+            
+            System.out.println("seed:  " + seeds[i] + "  count:  " + data[i]);
+            
+            
+            
+            if(seeds[i] != seeds[49]){
+            seeds[i+1] = seeds[i]+10;
+            }
+            
+        }
+        
+    }
+
+    /**
+     *
+     * @param numberOfPairsToGenerate
+     * @param seed
+     * @return total
+     */
+    public static int countRandomGcds(int numberOfPairsToGenerate, int seed) {
+        Random rand = new Random(seed);
+        int total = 0;
+
+        for (int i = 0; i < numberOfPairsToGenerate; i++) {
+            if (gcd(rand.nextInt(), rand.nextInt()) == 1) {
+                total++;
+            }
+        }
+
+        return total;
+    }
+
+    private static int gcd(int num1, int num2) {
+        //Extended Euclidian Algorithm
+        if (num2 == 0) {
+            return num1;
+        } else {
+            return gcd(num2, num1 % num2);
+
+        }
+    }
+}
